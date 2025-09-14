@@ -20,9 +20,11 @@ export default function Home({ projects }) {
         </div>
     );
 }
-
-export async function getServerSideProps() {
-    const res = await fetch('http://localhost:3000/api/projects');
+export async function getServerSideProps(context) {
+    const protocol = context.req.headers['x-forwarded-proto'] || 'https';
+    const host = context.req.headers.host;
+    const res = await fetch(`${protocol}://${host}/api/projects`);
     const projects = await res.json();
+
     return { props: { projects } };
 }
