@@ -1,0 +1,23 @@
+[
+    {
+        "id": "ascii-chat",
+        "title": "ASCII Chat App",
+        "summary": "A retro-themed chat with ASCII avatars and color palettes.",
+        "tags": [
+            "nextjs",
+            "websockets",
+            "ui"
+        ],
+        "content": "Built with Next.js and WebSocket for realtime chat. Styled using a terminal-like UI."
+    },
+    {
+        "id": "ascii-portfolio",
+        "title": "This Portfolio",
+        "summary": "A sample fullstack Next.js portfolio themed around ASCII & retro terminals.",
+        "tags": [
+            "nextjs",
+            "tailwind"
+        ],
+        "content": "Demo portfolio featuring projects, contact form and server API."
+    }
+]
