@@ -34,7 +34,7 @@ export default function ContactForm() {
     return (
         <form onSubmit={handleSubmit} style={{ maxWidth: 640 }}>
             <div style={{ marginBottom: '0.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem', backgroundColor:'black' }}>Name</label>
+                <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Name</label>
                 <input value={name} onChange={(e) => setName(e.target.value)} required style={{ width: '100%', padding: '0.5rem', borderRadius: 4 }} />
             </div>
             <div style={{ marginBottom: '0.5rem' }}>
