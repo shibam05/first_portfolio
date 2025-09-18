@@ -11,20 +11,28 @@ export default function ContactForm() {
         setStatus('sending');
 
         try {
-            const res = await fetch('/api/contact', {
+            // Replace YOUR_FORM_ID with your actual Formspree form ID
+            const res = await fetch('https://formspree.io/f/mnnbkenj', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, message })
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    message
+                })
             });
 
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
+            if (res.ok) {
+                setStatus('sent');
+                setName('');
+                setEmail('');
+                setMessage('');
+            } else {
+                throw new Error('Form submission failed');
             }
-
-            setStatus('sent');
-            setName('');
-            setEmail('');
-            setMessage('');
         } catch (err) {
             setStatus('error');
             console.error(err);
@@ -35,15 +43,15 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit} style={{ maxWidth: 640 }}>
             <div style={{ marginBottom: '0.5rem' }}>
                 <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Name</label>
-                <input value={name} onChange={(e) => setName(e.target.value)} required style={{ width: '100%', padding: '0.5rem', borderRadius: 4 }} />
+                <input value={name} onChange={(e) => setName(e.target.value)} required style={{ width: '100%', padding: '0.5rem', borderRadius: 4, color: 'green' }} />
             </div>
             <div style={{ marginBottom: '0.5rem' }}>
                 <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Email</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required style={{ width: '100%', padding: '0.5rem', borderRadius: 4 }} />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required style={{ width: '100%', padding: '0.5rem', borderRadius: 4, color: 'green' }} />
             </div>
             <div style={{ marginBottom: '0.75rem' }}>
                 <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Message</label>
-                <textarea value={message} onChange={(e) => setMessage(e.target.value)} required rows={5} style={{ width: '100%', padding: '0.5rem', borderRadius: 4 }} />
+                <textarea value={message} onChange={(e) => setMessage(e.target.value)} required rows={5} style={{ width: '100%', padding: '0.5rem', borderRadius: 4, color: 'green' }} />
             </div>
             <div>
                 <button type="submit" style={{ padding: '0.5rem 0.75rem', borderRadius: 4 }}>Send</button>
