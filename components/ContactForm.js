@@ -40,26 +40,47 @@ export default function ContactForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} style={{ maxWidth: 640 }}>
-            <div style={{ marginBottom: '0.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Name</label>
-                <input value={name} onChange={(e) => setName(e.target.value)} required style={{ width: '100%', padding: '0.5rem', borderRadius: 4, color: 'green' }} />
+        <div className="max-w-xl  space-y-6">
+            <div className="flex gap-6 text-terminal-accent text-lg">
+                <a
+                    href="https://x.com/tweetshibam"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    [X.com]
+                </a>
+                <a
+                    href="https://github.com/shibam05"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                >
+                    [GitHub]
+                </a>
             </div>
-            <div style={{ marginBottom: '0.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Email</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required style={{ width: '100%', padding: '0.5rem', borderRadius: 4, color: 'green' }} />
-            </div>
-            <div style={{ marginBottom: '0.75rem' }}>
-                <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Message</label>
-                <textarea value={message} onChange={(e) => setMessage(e.target.value)} required rows={5} style={{ width: '100%', padding: '0.5rem', borderRadius: 4, color: 'green' }} />
-            </div>
-            <div>
-                <button type="submit" style={{ padding: '0.5rem 0.75rem', borderRadius: 4 }}>Send</button>
-                {status === 'sending' && <span style={{ marginLeft: '0.75rem' }}>Sending...</span>}
-                {status === 'sent' && <span style={{ marginLeft: '0.75rem', color: 'var(--accent)' }}>Sent!</span>}
-                {status === 'error' && <span style={{ marginLeft: '0.75rem', color: 'red' }}>Error</span>}
-            </div>
-        </form>
+
+            <form onSubmit={handleSubmit} style={{ maxWidth: 640 }}>
+                <div style={{ marginBottom: '0.5rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Name</label>
+                    <input value={name} onChange={(e) => setName(e.target.value)} required style={{ width: '100%', padding: '0.5rem', borderRadius: 4, color: 'green' }} />
+                </div>
+                <div style={{ marginBottom: '0.5rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Email</label>
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required style={{ width: '100%', padding: '0.5rem', borderRadius: 4, color: 'green' }} />
+                </div>
+                <div style={{ marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Message</label>
+                    <textarea value={message} onChange={(e) => setMessage(e.target.value)} required rows={5} style={{ width: '100%', padding: '0.5rem', borderRadius: 4, color: 'green' }} />
+                </div>
+                <div>
+                    <button type="submit" style={{ padding: '0.5rem 0.75rem', borderRadius: 4 }}>Send</button>
+                    {status === 'sending' && <span style={{ marginLeft: '0.75rem' }}>Sending...</span>}
+                    {status === 'sent' && <span style={{ marginLeft: '0.75rem', color: 'var(--accent)' }}>Sent!</span>}
+                    {status === 'error' && <span style={{ marginLeft: '0.75rem', color: 'red' }}>Error</span>}
+                </div>
+            </form>
+        </div>
     );
 }
 
